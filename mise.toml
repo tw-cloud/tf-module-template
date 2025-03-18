@@ -3,10 +3,18 @@ terraform = "1.11.1"
 terraform-docs = "0.19.0"
 tflint = "0.55.1"
 
+[tasks."terraform:init"]
+description = "Initializes Terraform"
+run = "terraform init"
+
 [tasks."terraform:validate"]
 description = "Validates the Terraform files"
-run = "terraform -chdir=terraform validate"
+run = "terraform validate"
 
 [tasks."terraform:format"]
 description = "Formats the Terraform files"
-run = "terraform -chdir=terraform fmt"
+run = "terraform fmt"
+
+[tasks."tfdoc:generate"]
+description = "Generates Terraform documentation"
+run = "terraform-docs markdown . > README.md"
